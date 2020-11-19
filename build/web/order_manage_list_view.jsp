@@ -11,7 +11,7 @@
 <ul class="nav nav-tabs" role="tablist">
     <c:forEach var="i" begin="1" end="${steps.size()-1}">
         <li class="nav-item"> 
-            <a class="nav-link ${i eq 1?"active":""}" data-toggle="tab" 
+            <a onclick="switchTab(${steps[i].processStepNo});" class="nav-link ${i eq 1?"active":""}" data-toggle="tab" 
                href="#step${steps[i].processStepNo}">${steps[i].processStep}</a>
         </li>
     </c:forEach>
@@ -33,8 +33,7 @@
                 <tbody>
                 <c:forEach items="${orders}" var="order">
                     <c:if test ="${order.processStepNo == steps[i].processStepNo}">
-                        <tr>
-
+                        <tr class="pagingitem showit">
                             <td class="align-middle" scope="col">
                                 <form action="order_manage" method="POST">
                                     <input type="hidden" name="orderID" value="${order.orderID}">
@@ -67,7 +66,30 @@
         </div>
     </c:forEach>
 </div>
+<nav class="mt-4" id="paginationControl">
+    <p style="text-align: center; margin-bottom: 0px">Trang 
+        <span id="cur">1</span>/<span id="total">10</span>
+    </p>
+    <ul class="pagination justify-content-center">
+        <li class="page-item" style="cursor:pointer; user-select:none;" id="prev">
+            <a class="page-link" onclick="switchPage(-1)">Prev</a>
+        </li>
+        <li class="page-item" style="cursor:pointer; user-select:none;" id="next">
+            <a class="page-link" onclick="switchPage(1);">Next</a>
+        </li>
+    </ul>
+</nav>
 <script>
     addThousandSep();
+    controller = document.getElementById('paginationControl');
+    prev = document.getElementById('prev');
+    next = document.getElementById('next');
+    lblcur = document.getElementById('cur');
+    lbltotal = document.getElementById('total');
+    curtab = 2;
+    size = 6;
+    tabname = 'step';
+    itemDisplay = 'table-row'
+    switchTab(2);
 </script>
 <%@ include file = "template/footer.jsp"%>

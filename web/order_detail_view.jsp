@@ -43,40 +43,43 @@
         </tr>
     </tbody>
 </table>
-       
-<table class="table col-12 col-sm-8 col-md-6 col-lg-5" style="float: right; margin-left: 2000px">
-    <thead>
-        <tr>
-            <th colspan="2"  style="text-align: center;">Thông tin giao hàng</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Người nhận</td>
-            <td style="text-align: right;">${order.recipientName}</td>
-        </tr>
-        <tr>
-            <td>Địa chỉ giao hàng</td>
-            <td style="text-align: right;">${order.address}</td>
-        </tr>
-        <tr>
-            <td>Số điện thoại người nhận</td>
-            <td style="text-align: right;">${order.recipientPhone}</td>
-        </tr> 
-    </tbody>
-</table>
 
-<div class="col-12" style="text-align: right; float: right; margin-left: 2000px">
-    <c:if test="${order.processStepNo <=2}">
-        <form action="order_process" method="POST">
-            <input type="hidden" name="OrderID" value="${order.orderID}">
-            <input type="hidden" name="Step" value="5">
-            <button type="submit" class="btn btn-danger mr-4 mb-2">Hủy đơn hàng</button>
-        </form>   
-    </c:if>
-
-    <a href="order_list" class="btn btn-secondary mr-4">Quay lại</a>
+<div class="row">
+    <div class="table col-12 col-md-8 pl-5">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2"  style="text-align: center;">Thông tin giao hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Người nhận</td>
+                    <td style="text-align: right;">${order.recipientName}</td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ giao hàng</td>
+                    <td style="text-align: right;">${order.address}</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại người nhận</td>
+                    <td style="text-align: right;">${order.recipientPhone}</td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+    <div class="col-12 col-md-4 pr-4 pt-5" style="text-align: right;">
+        <c:if test="${order.processStepNo <=2}">
+            <form action="order_process" method="POST">
+                <input type="hidden" name="OrderID" value="${order.orderID}">
+                <input type="hidden" name="Step" value="5">
+                <button type="submit" class="btn btn-danger mr-4 mb-2">Hủy đơn hàng</button>
+            </form>   
+        </c:if>
+        <a href="order_list" class="btn btn-secondary mr-4">Quay lại</a>
+    </div>
 </div>
+                
 <script>
     addThousandSep();
 </script>

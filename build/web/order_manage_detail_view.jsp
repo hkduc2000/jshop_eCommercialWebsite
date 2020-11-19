@@ -48,56 +48,56 @@
     </tbody>
 </table>
 
-<table class="table col-12 col-sm-8 col-md-6 col-lg-5" style="float: right; margin-left: 2000px">
-    <thead>
-        <tr>
-            <th colspan="2"  style="text-align: center;">Thông tin giao hàng</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Người nhận</td>
-            <td style="text-align: right;">${order.recipientName}</td>
-        </tr>
-        <tr>
-            <td>Địa chỉ giao hàng</td>
-            <td style="text-align: right;">${order.address}</td>
-        </tr>
-        <tr>
-            <td>Số điện thoại người nhận</td>
-            <td style="text-align: right;">${order.recipientPhone}</td>
-        </tr> 
-    </tbody>
-</table>
-
-<div class="col-12" style="text-align: right; float: right; margin-left: 2000px">
-    <c:if test="${order.processStepNo<5}">
-        <form action="order_process" method="POST">
-            <input type="hidden" name="OrderID" value="${order.orderID}">
-            <input type="hidden" name="Step" value="5">
-            <button type="submit" class="btn btn-danger mr-4">Hủy đơn hàng</button>
-        </form> 
-    </c:if>
-    <h5 class="mr-4">Trạng thái đơn hàng: ${steps[order.processStepNo-1].processStep}</h5>
-    <c:if test="${order.processStepNo>2 && order.processStepNo!=5}">
-        <form action="order_process" method="POST"  style="display: inline-block;">
-            <input type="hidden" name="OrderID" value="${order.orderID}">
-            <input type="hidden" name="Step" value="${order.processStepNo-1}">
-            <button type="submit" class="btn btn-secondary mr-2">
-                Chuyển tới "${steps[order.processStepNo-2].processStep}"
-            </button>
-        </form>
-    </c:if>
-    <c:if test="${order.processStepNo < steps.size()-1}">
-        <form action="order_process" method="POST" style="display: inline-block;">
-            <input type="hidden" name="OrderID" value="${order.orderID}">
-            <input type="hidden" name="Step" value="${order.processStepNo+1}">
-            <button type="submit" class="btn btn-primary mr-4">
-                Chuyển tới "${steps[order.processStepNo].processStep}"
-            </button>
-        </form>
-    </c:if>
-
+<div class="row">
+    <table class="table col-12 col-lg-4 pl-5">
+        <thead>
+            <tr>
+                <th colspan="2"  style="text-align: center;">Thông tin giao hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Người nhận</td>
+                <td style="text-align: right;">${order.recipientName}</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ giao hàng</td>
+                <td style="text-align: right;">${order.address}</td>
+            </tr>
+            <tr>
+                <td>Số điện thoại người nhận</td>
+                <td style="text-align: right;">${order.recipientPhone}</td>
+            </tr> 
+        </tbody>
+    </table>
+    <div class="col-12 col-lg-8 pr-4 pt-5" style="text-align: right;">
+        <c:if test="${order.processStepNo<5}">
+            <form action="order_process" method="POST">
+                <input type="hidden" name="OrderID" value="${order.orderID}">
+                <input type="hidden" name="Step" value="5">
+                <button type="submit" class="btn btn-danger mr-4">Hủy đơn hàng</button>
+            </form> 
+        </c:if>
+        <h5 class="mr-4">Trạng thái đơn hàng: ${steps[order.processStepNo-1].processStep}</h5>
+        <c:if test="${order.processStepNo>2 && order.processStepNo!=5}">
+            <form action="order_process" method="POST"  style="display: inline-block;">
+                <input type="hidden" name="OrderID" value="${order.orderID}">
+                <input type="hidden" name="Step" value="${order.processStepNo-1}">
+                <button type="submit" class="btn btn-secondary mr-4 mb-2">
+                    Chuyển tới "${steps[order.processStepNo-2].processStep}"
+                </button>
+            </form>
+        </c:if>
+        <c:if test="${order.processStepNo < steps.size()-1}">
+            <form action="order_process" method="POST" style="display: inline-block;">
+                <input type="hidden" name="OrderID" value="${order.orderID}">
+                <input type="hidden" name="Step" value="${order.processStepNo+1}">
+                <button type="submit" class="btn btn-primary mr-4 mb-2">
+                    Chuyển tới "${steps[order.processStepNo].processStep}"
+                </button>
+            </form>
+        </c:if>
+    </div>
 </div>
 <script>
     addThousandSep();

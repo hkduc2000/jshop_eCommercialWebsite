@@ -53,10 +53,6 @@
         <servlet-class>controller.CheckOutServ</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OrderListServ</servlet-name>
-        <servlet-class>controller.OrderListServ</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>OrderDetailServ</servlet-name>
         <servlet-class>controller.OrderDetailServ</servlet-class>
     </servlet>
@@ -79,6 +75,10 @@
     <servlet>
         <servlet-name>EditProfileServ</servlet-name>
         <servlet-class>controller.EditProfileServ</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderListServ</servlet-name>
+        <servlet-class>controller.OrderListServ</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addItemServ</servlet-name>
@@ -133,10 +133,6 @@
         <url-pattern>/checkout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OrderListServ</servlet-name>
-        <url-pattern>/order_list</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>OrderDetailServ</servlet-name>
         <url-pattern>/order_detail</url-pattern>
     </servlet-mapping>
@@ -159,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>EditProfileServ</servlet-name>
         <url-pattern>/profile_edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderListServ</servlet-name>
+        <url-pattern>/order_list</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

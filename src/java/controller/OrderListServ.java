@@ -24,6 +24,7 @@ import model.Order;
  */
 public class OrderListServ extends HttpServlet {
 
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,7 +36,8 @@ public class OrderListServ extends HttpServlet {
         request.setAttribute("steps", new ProcessStepDAO().getAll());
         request.getRequestDispatcher("order_list_view.jsp").forward(request, response);
     }
- 
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,9 +50,14 @@ public class OrderListServ extends HttpServlet {
         request.getRequestDispatcher("order_detail_view.jsp").forward(request, response);
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

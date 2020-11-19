@@ -19,9 +19,9 @@ public class BaseDAO {
     protected Connection connection;
     public BaseDAO(){
         try {
-            String user = "admin";
+            String user = "sa";
             String pass = "20001998";
-            String url = "jdbc:sqlserver://jshop.crnsmb2nnxcf.us-east-2.rds.amazonaws.com:1433;databaseName=jshop";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=jshop";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {

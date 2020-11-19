@@ -21,7 +21,7 @@
     <tbody>
         <c:if test="${orders.size()>0}">
             <c:forEach var="i" begin="0" end="${orders.size()-1}">
-                <tr>
+                <tr class="pagingitem showit">
                     <td scope="col" class="align-middle">${i+1}</td>
                     <td class="align-middle" scope="col">
                         <form action="order_list" method="POST">
@@ -52,7 +52,42 @@
         </c:if>
     </tbody>
 </table>
+<nav class="mt-4" id="paginationControl">
+    <p style="text-align: center; margin-bottom: 0px">Trang 
+        <span id="cur">1</span>/<span id="total">10</span>
+    </p>
+    <ul class="pagination justify-content-center">
+        <li class="page-item" style="cursor:pointer; user-select:none;" id="prev">
+            <a class="page-link" onclick="switchPage(-1)">Prev</a>
+        </li>
+        <li class="page-item" style="cursor:pointer; user-select:none;" id="next">
+            <a class="page-link" onclick="switchPage(1);">Next</a>
+        </li>
+    </ul>
+</nav>
 <script>
     addThousandSep();
+    controller = document.getElementById('paginationControl');
+    prev = document.getElementById('prev');
+    next = document.getElementById('next');
+    lblcur = document.getElementById('cur');
+    lbltotal = document.getElementById('total');
+    curtab = 1;
+    size=6;
+    itemDisplay = "table-row";
+    items = document.getElementsByClassName('pagingitem showit');
+    if (items.length <= size) {
+        controller.style.display = "none";
+    } else {
+        controller.style.display = "block";
+        lbltotal.innerHTML = Math.ceil(items.length / size);
+    }
+    cur = 1;
+    for (var j = 0; (j < items.length) && (j < size); j++) {
+        items[j].style.display = "table-row";
+    }
+    for (var j = size; j < items.length; j++) {
+        items[j].style.display = "none";
+    }
 </script>
 <%@ include file = "template/footer.jsp"%>
