@@ -7,7 +7,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file = "template/header.jsp"%>
+<%--<%@ include file = "template/header.jsp"%>--%>
+<jsp:include page="template/header.jsp"></jsp:include>
 <form action="add" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label>Tên sản phẩm</label>
